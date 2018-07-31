@@ -17,16 +17,18 @@
 		}
 
 		body {
-			background-image: url("images/spaceBackground.png");
+			background-image: url("images/spaceTile.jpeg")/*url("images/spaceBackground.png")*/;
 			/*3840width  x  2160height*/
 			/*Link -> https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/jPLiQ-9/looped-4kuhd-nebula-galaxy-star-space-background-for-different-events-and-projects_rm2jcfxb__F0012.png*/
-			background-repeat:no-repeat;
-			background-attachment:fixed;
+			/*background-repeat:no-repeat;*/
+			background-attachment:fixed;*/
 			background-position:center;
+			background-size: 10% auto;
 			/*background-size: 100vw; /*Width, Height       If height is not listed it is auto*/
 			display: flex; /*This stops the planets from being centered horizontally*/
 			flex-direction: column;
 			align-items: stretch;
+			overflow-y: hidden; /*Stops scrolling  vertically*/
 		}
 
 		a {
@@ -35,12 +37,14 @@
 		}
 
 		header {
-			background: rgba(0,0,0,.6);
+			background: rgba(100,0,0,.6);
 			color: white;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 			padding: 20px 40px;
 			display: flex;
 			align-items: center;
+			position: fixed;
+			width: 96%;
 			font-family: "Open Sans", sans-serif;
 		}
 			header .title {
@@ -49,7 +53,35 @@
 				color: #D5380F;
 				display: inline-block;
 				text-align: center;
+				margin-bottom: -10px; /*Bad fix*/
 				transition: .5s;
+			}
+			header .title:hover + .disclaimer {
+				
+				/*display: inline;
+				opacity: 1;
+				margin-top: 0em;
+				height: 2.5em;*/
+				width: 220px;
+			}
+
+			header .disclaimer {
+				background-color: #D5380F;
+				/*display: none;*/ /*There's no animation for a display change*/
+				/*opacity: 1;
+				margin-top: -2.5em;
+				height: 2.5em;*/
+				width: 0px;
+				text-align: center;
+				border-radius: 5px;
+				cursor: default;
+				margin-left: 20px;
+				transition: .75s;
+			}
+			header .disclaimer div {
+				line-height: 2.5em;
+				white-space: nowrap;
+				overflow: hidden;
 			}
 
 			header .menu {
@@ -102,38 +134,89 @@
 			Make sure to check scale!!!
 			*/
 			main div.sun {
-				margin-left: -750px;
+				margin-left: -700px;
 				margin-top: 0px;
 			}
 			main div.sun img {
+				/*transform:translate(-80%,-50%);*/
 				height:900px;
 				width:900px;
 			}
 			main div.mercury {
 				margin-left: 1000px;
-				margin-top: 437.5px;
+				margin-top: 440px;
 			}
 			main div.mercury img {
 				transform: rotate(180deg);
-				height: 25px;
-				width: 25px;
+				height: 20px;
+				width: 20px;
 			}
 			main div.venus {
-				margin-left: 10px;
+				margin-left: -30px;
 				margin-top: 425px;
 			}
 			main div.venus img {
 				height: 50px;
 				width: 50px;
 			}
+			main div.earth {
+				margin-left: -10px;
+				margin-top: 422.5px;
+			}
+			main div.earth img {
+				height: 55px;
+				width: 55px;
+			}
+			main div.mars {
+				margin-left: -5px;
+				margin-top: 437.5px;
+			}
+			main div.mars img {
+				height: 25px;
+				width: 25px;
+			}
+			main div.jupiter {
+				margin-left: 10px;
+				margin-top: 350px;
+			}
 			main div.jupiter img {
 				transform: rotate(180deg);
+				height: 200px;
+				width: 200px;
+			}
+			main div.saturn {
+				margin-left: 150px;
+				margin-top: 360px;
 			}
 			main div.saturn img {
 				transform: rotate(180deg);
+				height: 180px;
+				width: 380px;
+			}
+			main div.uranus {
+				margin-left: 400px;
+				margin-top: 405px;
 			}
 			main div.uranus img {
 				transform: rotate(-135deg);
+				height: 90px;
+				width: 90px;
+			}
+			main div.neptune {
+				margin-left: 100px;
+				margin-top: 406px;
+			}
+			main div.neptune img {
+				height: 88px;
+				width: 88px;
+			}
+			main div.pluto {
+				margin-left: 100px;
+				margin-top: 444px;
+			}
+			main div.pluto img {
+				height: 12px;
+				width: 12px;
 			}
 
 		@media (max-width:1600px) {
@@ -144,19 +227,26 @@
 			header {
 				flex-direction: column;
 			}
-
-			header .menu {
-				text-align: center;
+			header .title:hover + .disclaimer {
+				height: 2.5em;
+				opacity: 1;
 			}
 
-			header img {
-				padding: 20px;
+			header .disclaimer {
+				height: 0em;
+				width: 220px;
+				opacity: 0;
+				text-align: center;
+				margin-left: 0px;
+			}
+			header .menu {
+				text-align: center;
 			}
 		}
 	</style>
 	<script>
 		function init() {
-			sizeBG();
+			//document.getElementById("header").style.width = "" + screen.width + "px";
 		}
 		function sizeBG() {
 			var bS = document.body.style;
@@ -165,9 +255,13 @@
 	</script>
 </head>
 <body onload="init()">
-	<header>
+	<nav>
+	<header id="header">
 		<div class="title">
 			THE PLANETS
+		</div>
+		<div class="disclaimer">
+			<div>*Diagram not to scale</div>
 		</div>
 		<div class="menu">
 			<a href="#">The Sun</a>
@@ -181,6 +275,7 @@
 			<a href="#">Pluto</a>
 		</div>
 	</header>
+	</nav>
 	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
 	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
 	<div class="wrapper">
