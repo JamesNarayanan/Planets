@@ -4,7 +4,7 @@
 	<title>The Planets</title>
 	<link href="https://fonts.googleapis.com/css?family=Orbitron:900|Rubik+Mono+One|Open+Sans" rel="stylesheet">
 	<style>
-		/*A lot of help from here -> https://codepen.io/anon/pen/grVVBG?editors=1100#0*/
+		/*A lot of help from here -> https://www.quora.com/How-do-I-move-an-image-to-the-top-right-of-the-page-using-CSS, https://codepen.io/anon/pen/grVVBG?editors=1100#0*/
 
 		* {
 			margin: 0;
@@ -12,8 +12,8 @@
 		}
 
 		html, body {
-		    height: 100%;
-		    font-size: 20px;
+			height: 100%;
+			font-size: 20px;
 		}
 
 		body {
@@ -24,7 +24,7 @@
 			background-attachment:fixed;
 			background-position:center;
 			/*background-size: 100vw; /*Width, Height       If height is not listed it is auto*/
-			display: flex;
+			display: flex; /*This stops the planets from being centered horizontally*/
 			flex-direction: column;
 			align-items: stretch;
 		}
@@ -63,73 +63,71 @@
 			header .menu a {
 				display: inline-block;
 				margin: 20px;
+				transition: .4s;
 			}
-		
+			header .menu a:hover {
+				font-size: .9em;
+				padding: .05em;
+				color: rgb(220,220,220);
+			}
+
+		.wrapper {
+		    width: 100%;
+		    flex-grow: 1;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
 		main {
 			padding: 40px 20px;
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-wrap: wrap;
+			/*justify-content: center;*/
+			align-items: center; /*Should vertically align to center*/
+			/*This makes the planets wrap -> flex-wrap: wrap;*/
+			/*align-self: center;*/
 		}
 			main div {
-				margin: 0px 0px;
+				margin: 10px 10px;
+				height: 100px;
+				width: 100px;
 				text-align: center;
 			}
 			main div img {
 				height: 100px;
 				width: 100px;
 				display: block;
-				margin: 50%;
 			}
 
-		#sun {
-
-		}
-		#mercury {
-			transform: rotate(180deg);
-		}
-		#venus {
-
-		}
-		#earth {
-
-		}
-		#mars {
-
-		}
-		#jupiter {
-			transform: rotate(180deg);
-		}
-		#saturn {
-			transform: rotate(180deg);
-		}
-		#uranus {
-			transform: rotate(-135deg);
-		}
-		#neptune {
-
-		}
-		#pluto {
-
-		}
+			main div.mercury img {
+				transform: rotate(180deg);
+			}
+			main div.jupiter img {
+				transform: rotate(180deg);
+			}
+			main div.saturn img {
+				transform: rotate(180deg);
+			}
+			main div.uranus img {
+				transform: rotate(-135deg);
+			}
 
 		@media (max-width:1600px) {
-		    body {
-		        display: block;
-		    }
+			body {
+				display: flex; /*Used to be block*/
+			}
 
-		    header {
-		        flex-direction: column;
-		    }
+			header {
+				flex-direction: column;
+			}
 
-		    header .menu {
-		        text-align: center;
-		    }
+			header .menu {
+				text-align: center;
+			}
 
-		    header img {
-		        padding: 20px;
-		    }
+			header img {
+				padding: 20px;
+			}
 		}
 	</style>
 	<script>
@@ -161,18 +159,20 @@
 	</header>
 	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
 	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
-	<main>
-		<div class="case"><img id="sun" src="images/sun.png"></div>
-		<!-- Planet class tags are probably unneeded -->
-		<div class="mercuryCase"><img class="planet" id="mercury" src="images/mercury.png" alt="mercury"></div>
-		<div class="venusCase"><img class="planet" id="venus" src="images/venus.png" alt="venus"></div>
-		<div class="earthCase"><img class="planet" id="earth" src="images/earth.png" alt="earth"></div>
-		<div class="marsCase"><img class="planet" id="mars" src="images/mars.png" alt="mars"></div>
-		<div class="jupiterCase"><img class="planet" id="jupiter" src="images/jupiter.png" alt="jupiter"></div>
-		<div class="saturnCase"><img class="planet" id="saturn" src="images/saturn.jpg" alt="saturn"></div>
-		<div class="uranusCase"><img class="planet" id="uranus" src="images/uranus.png" alt="uranus"></div>
-		<div class="neptuneCase"><img class="planet" id="neptune" src="images/neptune.png" alt="neptune"></div>
-		<div class="plutoCase"><img class="planet" id="pluto" src="images/pluto.png" alt="pluto"></div>
-	</main>
+	<div class="wrapper">
+		<main>
+			<div class="sun"><img src="images/sun.png"></div>
+			<!-- Planet class tags are probably unneeded -->
+			<div class="mercury"><img src="images/mercury.png" alt="mercury"></div>
+			<div class="venus"><img src="images/venus.png" alt="venus"></div>
+			<div class="earth"><img src="images/earth.png" alt="earth"></div>
+			<div class="mars"><img src="images/mars.png" alt="mars"></div>
+			<div class="jupiter"><img src="images/jupiter.png" alt="jupiter"></div>
+			<div class="saturn"><img src="images/saturn.jpg" alt="saturn"></div>
+			<div class="uranus"><img src="images/uranus.png" alt="uranus"></div>
+			<div class="neptune"><img src="images/neptune.png" alt="neptune"></div>
+			<div class="pluto"><img src="images/pluto.png" alt="pluto"></div>
+		</main>
+	</div>
 </body>
 </html>
