@@ -16,12 +16,24 @@
 		.title {
 			font-family: "Orbitron", sans-serif;
 			font-size: 2.5em;
+			text-align: center;
 			color: #D5380F;
+			display: block;
 			margin-left: 50px;
 			margin-top: 20px;
+			transition: .5s;
+		}
+		.title:hover {
+			font-size: 2.6em;
+			color: green;
 		}
 		.system {
 			
+		}
+		.case {
+			position: absolute;
+			display: inline-block;
+			top: 10vh;
 		}
 		.planet {
 			height: 10%;
@@ -75,16 +87,17 @@
 	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
 	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
 	<div class="system">
-		<img id="sun" src="images/sun.png">
-		<img class="planet" id="mercury" src="images/mercury.png">
-		<img class="planet" id="venus" src="images/venus.png">
-		<img class="planet" id="earth" src="images/earth.png">
-		<img class="planet" id="mars" src="images/mars.png">
-		<img class="planet" id="jupiter" src="images/jupiter.png">
-		<img class="planet" id="saturn" src="images/saturn.jpg">
-		<img class="planet" id="uranus" src="images/uranus.png">
-		<img class="planet" id="neptune" src="images/neptune.png">
-		<img class="planet" id="pluto" src="images/pluto.png">
+		<div class="case"><img id="sun" src="images/sun.png"></div>
+		<!-- Planet class tags are probably unneeded -->
+		<div class="case"><img class="planet" id="mercury" src="images/mercury.png"></div>
+		<div class="case"><img class="planet" id="venus" src="images/venus.png"></div>
+		<div class="case"><img class="planet" id="earth" src="images/earth.png"></div>
+		<div class="case"><img class="planet" id="mars" src="images/mars.png"></div>
+		<div class="case"><img class="planet" id="jupiter" src="images/jupiter.png"></div>
+		<div class="case"><img class="planet" id="saturn" src="images/saturn.jpg"></div>
+		<div class="case"><img class="planet" id="uranus" src="images/uranus.png"></div>
+		<div class="case"><img class="planet" id="neptune" src="images/neptune.png"></div>
+		<div class="case"><img class="planet" id="pluto" src="images/pluto.png"></div>
 	</div>
 </body>
 </html>
