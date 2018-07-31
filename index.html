@@ -2,47 +2,89 @@
 <html>
 <head>
 	<title>The Planets</title>
-	<link href="https://fonts.googleapis.com/css?family=Orbitron:900|Rubik+Mono+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron:900|Rubik+Mono+One|Open+Sans" rel="stylesheet">
 	<style>
+		/*A lot of help from here -> https://codepen.io/anon/pen/grVVBG?editors=1100#0*/
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html, body {
+		    height: 100%;
+		    font-size: 20px;
+		}
+
 		body {
 			background-image: url("images/spaceBackground.png");
 			/*3840width  x  2160height*/
 			/*Link -> https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/jPLiQ-9/looped-4kuhd-nebula-galaxy-star-space-background-for-different-events-and-projects_rm2jcfxb__F0012.png*/
 			background-repeat:no-repeat;
-            background-attachment:fixed;
-            background-position:center;
-            /*background-size: 100vw; /*Width, Height       If height is not listed it is auto*/
+			background-attachment:fixed;
+			background-position:center;
+			/*background-size: 100vw; /*Width, Height       If height is not listed it is auto*/
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
 		}
-		.title {
-			font-family: "Orbitron", sans-serif;
-			font-size: 2.5em;
-			text-align: center;
-			color: #D5380F;
-			display: block;
-			margin-left: 50px;
-			margin-top: 20px;
-			transition: .5s;
+
+		a {
+			text-decoration: none;
+			color: inherit;
 		}
-		.title:hover {
-			font-size: 2.6em;
-			color: green;
+
+		header {
+			background: rgba(0,0,0,.6);
+			color: white;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			padding: 20px 40px;
+			display: flex;
+			align-items: center;
+			font-family: "Open Sans", sans-serif;
 		}
-		.system {
-			
+			header .title {
+				font-family: "Orbitron", sans-serif;
+				font-size: 3em;
+				color: #D5380F;
+				display: inline-block;
+				text-align: center;
+				transition: .5s;
+			}
+			header .title:hover {
+				font-size: 3.1em;
+			}
+
+			header .menu {
+				flex-grow: 1;
+				text-align: right;
+			}
+
+			header .menu a {
+				display: inline-block;
+				margin: 20px;
+			}
+		
+		main {
+			padding: 40px 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
 		}
-		.case {
-			position: absolute;
-			display: inline-block;
-			top: 10vh;
-		}
-		.planet {
-			height: 10%;
-			width: 10%;
-		}
+			main div {
+				margin: 0px 0px;
+				text-align: center;
+			}
+			main div img {
+				height: 100px;
+				width: 100px;
+				display: block;
+				margin: 50%;
+			}
+
 		#sun {
-			height:800px;
-			width: 800px;
-			margin-left: -600px;
+
 		}
 		#mercury {
 			transform: rotate(180deg);
@@ -71,6 +113,24 @@
 		#pluto {
 
 		}
+
+		@media (max-width:1600px) {
+		    body {
+		        display: block;
+		    }
+
+		    header {
+		        flex-direction: column;
+		    }
+
+		    header .menu {
+		        text-align: center;
+		    }
+
+		    header img {
+		        padding: 20px;
+		    }
+		}
 	</style>
 	<script>
 		function init() {
@@ -83,21 +143,36 @@
 	</script>
 </head>
 <body onload="init()">
-	<h1 class="title">THE PLANETS</h1>
+	<header>
+		<div class="title">
+			THE PLANETS
+		</div>
+		<div class="menu">
+			<a href="#">The Sun</a>
+			<a href="#">Mercury</a>
+			<a href="#">Venus</a>
+			<a href="#">Mars</a>
+			<a href="#">Jupiter</a>
+			<a href="#">Saturn</a>
+			<a href="#">Uranus</a>
+			<a href="#">Neptune</a>
+			<a href="#">Pluto</a>
+		</div>
+	</header>
 	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
 	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
-	<div class="system">
+	<main>
 		<div class="case"><img id="sun" src="images/sun.png"></div>
 		<!-- Planet class tags are probably unneeded -->
-		<div class="case"><img class="planet" id="mercury" src="images/mercury.png"></div>
-		<div class="case"><img class="planet" id="venus" src="images/venus.png"></div>
-		<div class="case"><img class="planet" id="earth" src="images/earth.png"></div>
-		<div class="case"><img class="planet" id="mars" src="images/mars.png"></div>
-		<div class="case"><img class="planet" id="jupiter" src="images/jupiter.png"></div>
-		<div class="case"><img class="planet" id="saturn" src="images/saturn.jpg"></div>
-		<div class="case"><img class="planet" id="uranus" src="images/uranus.png"></div>
-		<div class="case"><img class="planet" id="neptune" src="images/neptune.png"></div>
-		<div class="case"><img class="planet" id="pluto" src="images/pluto.png"></div>
-	</div>
+		<div class="mercuryCase"><img class="planet" id="mercury" src="images/mercury.png" alt="mercury"></div>
+		<div class="venusCase"><img class="planet" id="venus" src="images/venus.png" alt="venus"></div>
+		<div class="earthCase"><img class="planet" id="earth" src="images/earth.png" alt="earth"></div>
+		<div class="marsCase"><img class="planet" id="mars" src="images/mars.png" alt="mars"></div>
+		<div class="jupiterCase"><img class="planet" id="jupiter" src="images/jupiter.png" alt="jupiter"></div>
+		<div class="saturnCase"><img class="planet" id="saturn" src="images/saturn.jpg" alt="saturn"></div>
+		<div class="uranusCase"><img class="planet" id="uranus" src="images/uranus.png" alt="uranus"></div>
+		<div class="neptuneCase"><img class="planet" id="neptune" src="images/neptune.png" alt="neptune"></div>
+		<div class="plutoCase"><img class="planet" id="pluto" src="images/pluto.png" alt="pluto"></div>
+	</main>
 </body>
 </html>
