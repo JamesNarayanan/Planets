@@ -21,7 +21,7 @@
 			/*3840width  x  2160height*/
 			/*Link -> https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/jPLiQ-9/looped-4kuhd-nebula-galaxy-star-space-background-for-different-events-and-projects_rm2jcfxb__F0012.png*/
 			/*background-repeat:no-repeat;*/
-			background-attachment:fixed;*/
+			
 			background-position:center;
 			background-size: 10% auto;
 			/*background-size: 100vw; /*Width, Height       If height is not listed it is auto*/
@@ -37,7 +37,7 @@
 		}
 
 		header {
-			background: rgba(100,0,0,.6);
+			background: rgba(0,0,0,.6);
 			color: white;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 			padding: 20px 40px;
@@ -46,6 +46,7 @@
 			position: fixed;
 			width: 96%;
 			font-family: "Open Sans", sans-serif;
+			z-index: 1; /*Kepps it on top of pictures*/
 		}
 			header .title {
 				font-family: "Orbitron", sans-serif;
@@ -134,17 +135,17 @@
 			Make sure to check scale!!!
 			*/
 			main div.sun {
-				margin-left: -700px;
-				margin-top: 0px;
+				margin-left: -750px;
+				margin-top: 50px;
 			}
 			main div.sun img {
 				/*transform:translate(-80%,-50%);*/
-				height:900px;
-				width:900px;
+				height:1000px;
+				width:1000px;
 			}
 			main div.mercury {
 				margin-left: 1000px;
-				margin-top: 440px;
+				margin-top: 540px;
 			}
 			main div.mercury img {
 				transform: rotate(180deg);
@@ -153,70 +154,70 @@
 			}
 			main div.venus {
 				margin-left: -30px;
-				margin-top: 425px;
+				margin-top: 525.2px;
 			}
 			main div.venus img {
-				height: 50px;
-				width: 50px;
+				height: 49.6px;
+				width: 49.6px;
 			}
 			main div.earth {
 				margin-left: -10px;
-				margin-top: 422.5px;
+				margin-top: 523.8px;
 			}
 			main div.earth img {
-				height: 55px;
-				width: 55px;
+				height: 52.3px;
+				width: 52.3px;
 			}
 			main div.mars {
 				margin-left: -5px;
-				margin-top: 437.5px;
+				margin-top: 536.1px;
 			}
 			main div.mars img {
-				height: 25px;
-				width: 25px;
+				height: 27.8px;
+				width: 27.8px;
 			}
 			main div.jupiter {
-				margin-left: 10px;
-				margin-top: 350px;
+				margin-left: 150px;
+				margin-top: 257.3px;
 			}
 			main div.jupiter img {
 				transform: rotate(180deg);
-				height: 200px;
-				width: 200px;
+				height: 585.5px;
+				width: 585.5px;
 			}
 			main div.saturn {
-				margin-left: 150px;
-				margin-top: 360px;
+				margin-left: 1000px;
+				margin-top: 327.1px;
 			}
 			main div.saturn img {
 				transform: rotate(180deg);
-				height: 180px;
-				width: 380px;
+				height: 445.8px;
+				width: 1230px;
 			}
 			main div.uranus {
-				margin-left: 400px;
-				margin-top: 405px;
+				margin-left: 1500px;
+				margin-top: 445.2px;
 			}
 			main div.uranus img {
 				transform: rotate(-135deg);
-				height: 90px;
-				width: 90px;
+				height: 209.6px;
+				width: 209.6px;
 			}
 			main div.neptune {
-				margin-left: 100px;
-				margin-top: 406px;
+				margin-left: 1000px;
+				margin-top: 448.5px;
 			}
 			main div.neptune img {
-				height: 88px;
-				width: 88px;
+				height: 203.1px;
+				width: 203.1px;
 			}
 			main div.pluto {
-				margin-left: 100px;
-				margin-top: 444px;
+				margin-left: 1500px;
+				margin-top: 545.3px;
 			}
 			main div.pluto img {
-				height: 12px;
-				width: 12px;
+				height: 9.3px;
+				width: 9.3px;
 			}
 
 		@media (max-width:1600px) {
@@ -287,7 +288,7 @@
 			<div class="earth"><img src="images/earth.png" alt="earth"></div>
 			<div class="mars"><img src="images/mars.png" alt="mars"></div>
 			<div class="jupiter"><img src="images/jupiter.png" alt="jupiter"></div>
-			<div class="saturn"><img src="images/saturn.jpg" alt="saturn"></div>
+			<div class="saturn"><img src="images/saturn_2.png" alt="saturn"></div>
 			<div class="uranus"><img src="images/uranus.png" alt="uranus"></div>
 			<div class="neptune"><img src="images/neptune.png" alt="neptune"></div>
 			<div class="pluto"><img src="images/pluto.png" alt="pluto"></div>
