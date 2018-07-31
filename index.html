@@ -5,18 +5,86 @@
 	<link href="https://fonts.googleapis.com/css?family=Orbitron:900|Rubik+Mono+One" rel="stylesheet">
 	<style>
 		body {
-			background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/jPLiQ-9/looped-4kuhd-nebula-galaxy-star-space-background-for-different-events-and-projects_rm2jcfxb__F0012.png");
+			background-image: url("images/spaceBackground.png");
+			/*3840width  x  2160height*/
+			/*Link -> https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/jPLiQ-9/looped-4kuhd-nebula-galaxy-star-space-background-for-different-events-and-projects_rm2jcfxb__F0012.png*/
+			background-repeat:no-repeat;
+            background-attachment:fixed;
+            background-position:center;
+            /*background-size: 100vw; /*Width, Height       If height is not listed it is auto*/
 		}
 		.title {
-			font-family: "Rubik Mono One", sans-serif;
+			font-family: "Orbitron", sans-serif;
 			font-size: 2.5em;
-			color: white;
+			color: #D5380F;
 			margin-left: 50px;
 			margin-top: 20px;
 		}
+		.system {
+			
+		}
+		.planet {
+			height: 10%;
+			width: 10%;
+		}
+		#sun {
+			height:800px;
+			width: 800px;
+			margin-left: -600px;
+		}
+		#mercury {
+			transform: rotate(180deg);
+		}
+		#venus {
+
+		}
+		#earth {
+
+		}
+		#mars {
+
+		}
+		#jupiter {
+			transform: rotate(180deg);
+		}
+		#saturn {
+			transform: rotate(180deg);
+		}
+		#uranus {
+			transform: rotate(-135deg);
+		}
+		#neptune {
+
+		}
+		#pluto {
+
+		}
 	</style>
+	<script>
+		function init() {
+			sizeBG();
+		}
+		function sizeBG() {
+			var bS = document.body.style;
+			bS.backgroundSize="" + screen.width + "px " + screen.height + "px";
+		}
+	</script>
 </head>
-<body>
-	<h1 class="title">The Planets</h1>
+<body onload="init()">
+	<h1 class="title">THE PLANETS</h1>
+	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
+	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
+	<div class="system">
+		<img id="sun" src="images/sun.png">
+		<img class="planet" id="mercury" src="images/mercury.png">
+		<img class="planet" id="venus" src="images/venus.png">
+		<img class="planet" id="earth" src="images/earth.png">
+		<img class="planet" id="mars" src="images/mars.png">
+		<img class="planet" id="jupiter" src="images/jupiter.png">
+		<img class="planet" id="saturn" src="images/saturn.jpg">
+		<img class="planet" id="uranus" src="images/uranus.png">
+		<img class="planet" id="neptune" src="images/neptune.png">
+		<img class="planet" id="pluto" src="images/pluto.png">
+	</div>
 </body>
 </html>
