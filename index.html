@@ -362,7 +362,16 @@
 		var startMouseX;
 		var mainSpot = 0;
 
-		
+		var timestep = 20; //In msec
+		var done = false;
+		setInterval(botScroll, timestep); //Method to call, timestep
+
+		function botScroll() {
+			if(!done) {
+				console.log(10);
+				document.getElementsByClassName("main")[0].style.transform = "translateX(10px)";
+			}
+		}
 
 		function handleMyMouseMove(e) {
 			var mouseX = e.clientX;
@@ -426,6 +435,7 @@
 
 		function handleMyMouseDown(e) {
 			mousepressed = true;
+			done = true;
 			startMouseX=e.clientX;
 		}
 		function handleMyMouseUp(e) {
