@@ -103,16 +103,17 @@
 			}
 
 		.wrapper {
-		    width: 100%;
-		    flex-grow: 1;
-		    display: flex;
-		    /*justify-content: center;
-		    align-items: start; /*center*/
+			width: 100%;
+			flex-grow: 1;
+			display: flex;
+			/*justify-content: center;
+			align-items: start; /*center*/
 		}
 
 		main {
 			padding: 0px 20px; /*40px 20px*/
 			display: flex;
+			user-select: none;
 			/*justify-content: center;*/
 			/*align-items: center; /*Should vertically align to center*/
 			/*This makes the planets wrap -> flex-wrap: wrap;*/
@@ -221,6 +222,49 @@
 				width: 9.3px;
 			}
 
+			div.scroll {
+				position: fixed;
+				left: 2.5%; /*(100-width)/2*/
+				/*margin-left: -47.5%; /*This value should be have of the width to center align it*/
+				bottom: 20px;
+				height: 25px;
+				width: 95%;
+				border-radius: 5px;
+				background-color: black;
+				opacity: .6;
+				transition: .5s;
+			}
+			div.scroll:hover {
+				opacity: 1;
+			}
+			div.marker {
+				position: fixed;
+				width: 5%;
+				height: 35px;
+				margin-top: -5px; /*Should be half of the difference between this height and scroll height*/
+				border-radius: 7.5px;
+				z-index: 1;
+				cursor: pointer;
+				background-color: rgb(60,60,60);
+			}
+			div.start {
+				position: fixed;
+				width: 25px;
+				height: inherit;
+				border-radius: inherit;
+				left: 2.5%; /*Should be (100-scroll.width)/2*/
+				bottom: inherit;
+				background-color: rgb(30,30,30);
+			}
+			div.end {
+				position: fixed;
+				width: 25px;
+				height: inherit;
+				border-radius: inherit;
+				right: 2.5%; /*Should be (100-scroll.width)/2*/
+				bottom: inherit;
+				background-color: rgb(30,30,30);
+			}
 		@media (max-width:1600px) {
 			body {
 				display: flex; /*Used to be block*/
@@ -250,7 +294,16 @@
 	</style>
 	<script>
 		function init() {
-			
+			//Need to find a way to do the scroll without removing the scroll bar, or make a way to scroll without the bar
+			/*setTimeout(function(){
+				
+				//make the div slides instead of jumping to the destination
+				document.getElementsByClassName("main")[0].style.transition = "transform 20s ease"	
+				
+				//will slide 30px to the right, can be negative (-100px), percentage (100%)
+				document.getElementsByClassName("main")[0].style.transform = "translateX(-5500px)"
+			 
+			}, 1000);*/
 		}
 		function sizeBG() {
 			var bS = document.body.style;
@@ -295,5 +348,62 @@
 			<div class="pluto"><a href="pluto.html"><img src="images/pluto.png" alt="pluto"></a></div>
 		</main>
 	</div>
+	<div class="scroll">
+		<div class="start"></div>
+		<div class="marker"></div>
+		<div class="end"></div>
+	</div>
+	<script type="text/javascript">
+	//https://stackoverflow.com/questions/5730433/keep-mouse-inside-a-div
+		var marker = document.getElementsByClassName("marker")[0];
+		var scroll = document.getElementsByClassName("scroll")[0];
+		var startOpac = document.getElementsByClassName("scroll")[0].style.opacity;
+		var mousepressed = false;
+		var startMouseX;
+
+		
+
+		function handleMyMouseMove(e) {
+			var mouseX = e.clientX;
+			var move = mouseX - startMouseX;
+
+			var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
+			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
+			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;//(1 - (parseInt(getStyle(scroll, 'width'), 10)/window.innerWidth))/2;
+			var error = sideMarginPercent*.0; //If needed
+
+			console.log("spotPercent: " + spotPercent);
+			console.log("markerWidthPercent: " + markerWidthPercent);
+			console.log("sideMarginPercent: " + sideMarginPercent);
+
+			var inScrollBar = (spotPercent >= sideMarginPercent - error) && ((spotPercent+markerWidthPercent) <= 1 - sideMarginPercent + error);
+			console.log("inScrollBar: " + inScrollBar);
+			if(mousepressed && inScrollBar) {
+				scroll.style.opacity = 1;
+				marker.style.left = move + "px";
+			}
+		}
+
+		function handleMyMouseDown(e) {
+			mousepressed = true;
+			startMouseX=e.clientX;
+		}
+		function handleMyMouseUp(e) {
+			mousepressed = false;
+
+			scroll.style.opacity = startOpac;
+		}
+		function getStyle(el,styleProp) { //https://stackoverflow.com/questions/10556185/style-backgroundcolor-is-an-empty-string-in-javascript
+		    if (el.currentStyle)
+		        return el.currentStyle[styleProp];
+
+		    return document.defaultView.getComputedStyle(el,null)[styleProp];
+		}
+
+		window.addEventListener("mousemove", handleMyMouseMove, false);
+		marker.addEventListener("mousedown", handleMyMouseDown, false);
+		window.addEventListener("mouseup", handleMyMouseUp, false);
+
+	</script>
 </body>
 </html>
