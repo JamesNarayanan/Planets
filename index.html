@@ -365,28 +365,34 @@
 
 		function handleMyMouseMove(e) {
 			var mouseX = e.clientX;
-			var move = mouseX - startMouseX;
+			var newSpot = parseInt(getStyle(marker, 'left'), 10) + mouseX - startMouseX;
+			console.log("New Spot: " + newSpot);
 
 			var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
+			var newSpotPercent = newSpot/window.innerHeight;
 			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
 			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;//(1 - (parseInt(getStyle(scroll, 'width'), 10)/window.innerWidth))/2;
-			var error = sideMarginPercent*.0; //If needed
+			var error = sideMarginPercent*.000; //If needed
 
-			console.log("spotPercent: " + spotPercent);
-			console.log("markerWidthPercent: " + markerWidthPercent);
-			console.log("sideMarginPercent: " + sideMarginPercent);
+			console.log("newSpotPercent" + newSpotPercent);
+			//console.log("spotPercent: " + spotPercent);
+			//console.log("markerWidthPercent: " + markerWidthPercent);
+			//console.log("sideMarginPercent: " + sideMarginPercent);
 
-			var inScrollBar = (spotPercent >= sideMarginPercent - error) && ((spotPercent+markerWidthPercent) <= 1 - sideMarginPercent + error);
+			var inScrollBar = (newSpotPercent > sideMarginPercent - error) && (newSpotPercent+markerWidthPercent < 1 - sideMarginPercent + error);
+			//(spotPercent > sideMarginPercent - error) && (spotPercent+markerWidthPercent < 1 - sideMarginPercent + error);
 			console.log("inScrollBar: " + inScrollBar);
+
 			if(mousepressed && inScrollBar) {
 				scroll.style.opacity = 1;
-				marker.style.left = move + "px";
+				startMouseX = mouseX;
+				marker.style.left = newSpot + "px";
 			}
 		}
 
 		function handleMyMouseDown(e) {
-			mousepressed = true;
 			startMouseX=e.clientX;
+			mousepressed = true;
 		}
 		function handleMyMouseUp(e) {
 			mousepressed = false;
