@@ -365,38 +365,57 @@
 
 		function handleMyMouseMove(e) {
 			var mouseX = e.clientX;
-			var newSpot = parseInt(getStyle(marker, 'left'), 10) + mouseX - startMouseX;
+			var currentSpot = parseInt(getStyle(marker, 'left'), 10);
+			var newSpot = currentSpot + mouseX - startMouseX;
 			console.log("New Spot: " + newSpot);
+			//console.log("MouseX: " + mouseX);
+			//console.log("startMouseX: " + startMouseX);
 
 			var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
-			var newSpotPercent = newSpot/window.innerHeight;
+			//var newSpotPercent = newSpot/window.innerHeight;
 			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
 			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;//(1 - (parseInt(getStyle(scroll, 'width'), 10)/window.innerWidth))/2;
-			var error = sideMarginPercent*.000; //If needed
+			var error = sideMarginPercent*.05; //If needed
 
-			console.log("newSpotPercent" + newSpotPercent);
+			//console.log("newSpotPercent" + newSpotPercent);
 			//console.log("spotPercent: " + spotPercent);
 			//console.log("markerWidthPercent: " + markerWidthPercent);
 			//console.log("sideMarginPercent: " + sideMarginPercent);
+			//console.log("error: " + error);
 
-			var inScrollBar = (newSpotPercent > sideMarginPercent - error) && (newSpotPercent+markerWidthPercent < 1 - sideMarginPercent + error);
-			//(spotPercent > sideMarginPercent - error) && (spotPercent+markerWidthPercent < 1 - sideMarginPercent + error);
-			console.log("inScrollBar: " + inScrollBar);
+			//var inScrollBar = (spotPercent >= sideMarginPercent - error) && (spotPercent+markerWidthPercent <= 1 - sideMarginPercent + error);
+			var inLeft = (spotPercent >= sideMarginPercent - error);
+			var inRight = (spotPercent+markerWidthPercent <= 1 - sideMarginPercent + error);
+			var moveLeft = newSpot<currentSpot;
+			var moveRight = newSpot>currentSpot;
+			
+			//console.log("inScrollBar: " + 0);
+			
+			var maxRight = (1 - sideMarginPercent - markerWidthPercent)*window.innerWidth;
+			var maxLeft = sideMarginPercent*window*innerWidth;
 
-			if(mousepressed && inScrollBar) {
+			console.log("maxRight: " + maxRight);
+			console.log("maxLeft: " + maxLeft)
+
+			if(mousepressed && (inLeft || moveRight) && (inRight || moveLeft)) {
 				scroll.style.opacity = 1;
 				startMouseX = mouseX;
-				marker.style.left = newSpot + "px";
+				if(newSpot>maxRight)
+					marker.style.left = maxRight + "px";
+				else if(newSpot<maxLeft)
+					marker.style.left = maxLeft + "px";
+				else
+					marker.style.left = newSpot + "px";
 			}
+			//console.log("---------------------------");
 		}
 
 		function handleMyMouseDown(e) {
-			startMouseX=e.clientX;
 			mousepressed = true;
+			startMouseX=e.clientX;
 		}
 		function handleMyMouseUp(e) {
 			mousepressed = false;
-
 			scroll.style.opacity = startOpac;
 		}
 		function getStyle(el,styleProp) { //https://stackoverflow.com/questions/10556185/style-backgroundcolor-is-an-empty-string-in-javascript
