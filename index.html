@@ -360,6 +360,7 @@
 		var startOpac = document.getElementsByClassName("scroll")[0].style.opacity;
 		var mousepressed = false;
 		var startMouseX;
+		var mainSpot = 0;
 
 		
 
@@ -367,17 +368,15 @@
 			var mouseX = e.clientX;
 			var currentSpot = parseInt(getStyle(marker, 'left'), 10);
 			var newSpot = currentSpot + mouseX - startMouseX;
-			console.log("New Spot: " + newSpot);
+			//console.log("New Spot: " + newSpot);
 			//console.log("MouseX: " + mouseX);
 			//console.log("startMouseX: " + startMouseX);
 
 			var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
-			//var newSpotPercent = newSpot/window.innerHeight;
 			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
 			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;//(1 - (parseInt(getStyle(scroll, 'width'), 10)/window.innerWidth))/2;
-			var error = sideMarginPercent*.05; //If needed
+			var error = sideMarginPercent*.00; //If needed
 
-			//console.log("newSpotPercent" + newSpotPercent);
 			//console.log("spotPercent: " + spotPercent);
 			//console.log("markerWidthPercent: " + markerWidthPercent);
 			//console.log("sideMarginPercent: " + sideMarginPercent);
@@ -394,18 +393,33 @@
 			var maxRight = (1 - sideMarginPercent - markerWidthPercent)*window.innerWidth;
 			var maxLeft = sideMarginPercent*window.innerWidth;
 
-			console.log("maxRight: " + maxRight);
-			console.log("maxLeft: " + maxLeft)
+			//console.log("maxRight: " + maxRight);
+			//console.log("maxLeft: " + maxLeft)
+
+			var movePercent = (spotPercent - sideMarginPercent) * 1/(1 - (markerWidthPercent + 2*sideMarginPercent));
 
 			if(mousepressed && (inLeft || moveRight) && (inRight || moveLeft)) {
 				scroll.style.opacity = 1;
 				startMouseX = mouseX;
-				if(newSpot>maxRight)
-					marker.style.left = maxRight + "px";
-				else if(newSpot<maxLeft)
-					marker.style.left = maxLeft + "px";
-				else if(mouseX>maxLeft && mouseX<maxRight + markerWidthPercent*window.innerWidth)
-					marker.style.left = newSpot + "px";
+
+				mainSpot = movePercent * (-5000 - 1000000/window.innerWidth);
+				document.getElementsByClassName("main")[0].style.transform = "translateX(" + mainSpot + "px)";
+
+				//console.log("movePercent: " + movePercent);
+				//console.log("mainSpot: " + mainSpot);
+
+				if(newSpot>maxRight) {
+					//marker.style.left = maxRight + "px";
+					marker.style.left = (maxRight/window.innerWidth)*100 + "%";
+				}
+				else if(newSpot<maxLeft) {
+					//marker.style.left = maxLeft + "px";
+					marker.style.left = (maxLeft/window.innerWidth)*100 + "%";
+				}
+				else if(mouseX>maxLeft && mouseX<maxRight + markerWidthPercent*window.innerWidth) {
+					//marker.style.left = newSpot + "px";
+					marker.style.left = (newSpot/window.innerWidth)*100 + "%";
+				}
 			}
 			//console.log("---------------------------");
 		}
