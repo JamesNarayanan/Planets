@@ -250,7 +250,11 @@
 	</style>
 	<script>
 		function init() {
-			
+			pageScroll();
+		}
+		function pageScroll() {
+			window.scrollBy(1,0);
+    		scrolldelay = setTimeout(pageScroll,10);
 		}
 		function sizeBG() {
 			var bS = document.body.style;
@@ -258,7 +262,7 @@
 		}
 	</script>
 </head>
-<body onload="init()">
+<body onload="init()" on>
 	<header id="header">
 		<div class="title">
 			THE PLANETS
