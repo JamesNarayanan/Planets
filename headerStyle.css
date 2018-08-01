@@ -1,0 +1,82 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+header {
+	background: rgba(125,0,0,1); /*Subject to change*/
+	color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	padding: 20px 40px;
+	display: flex;
+	align-items: center;
+	position: fixed;
+	width: 96%;
+	font-family: "Open Sans", sans-serif;
+	z-index: 1; /*Keeps it on top of pictures*/
+}
+	header .title {
+		font-family: "Orbitron", sans-serif;
+		font-size: 3em;
+		color: #D5380F;
+		display: inline-block;
+		text-align: center;
+		margin-bottom: -10px; /*Bad fix*/
+		transition: .5s;
+	}
+
+	header .menu {
+		flex-grow: 1;
+		text-align: right;
+	}
+
+	header .menu a {
+		display: inline-block;
+		margin: 20px;
+		transition: .4s;
+	}
+	header .menu a:hover {
+		font-size: .9em;
+		padding: .05em;
+		color: #D5380F;
+	}
+	header .menu .thisPlanet {
+		color: white/*#D5380F*/;
+		padding: 10px;
+		background-color: rgba(0,0,0,.4);
+	}
+	header .menu .thisPlanet:hover {
+		font-size: 1em;
+		padding: 10px;
+		color: white;
+	}
+
+@media (max-width:1600px) {
+			body {
+				display: flex; /*Used to be block*/
+			}
+
+			header {
+				flex-direction: column;
+			}
+			header .title:hover + .disclaimer {
+				height: 2.5em;
+				opacity: 1;
+				visibility: visible;
+			}
+
+			header .disclaimer {
+				height: 0em;
+				width: 500px;
+				visibility: hidden;
+				opacity: 0;
+				text-align: center;
+				margin-left: 0px;
+			}
+			header .menu {
+				text-align: center;
+			}
+		}

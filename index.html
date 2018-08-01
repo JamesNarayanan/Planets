@@ -46,7 +46,7 @@
 			position: fixed;
 			width: 96%;
 			font-family: "Open Sans", sans-serif;
-			z-index: 1; /*Kepps it on top of pictures*/
+			z-index: 1; /*Keeps it on top of pictures*/
 		}
 			header .title {
 				font-family: "Orbitron", sans-serif;
@@ -97,7 +97,8 @@
 			}
 			header .menu a:hover {
 				font-size: .9em;
-				padding: .05em;
+				padding-left: .2em;
+				padding-right: .2em;
 				color: #D5380F;
 			}
 
@@ -132,7 +133,7 @@
 			}
 
 			/*
-			Make sure to check scale!!!
+				A lot of measurements from here -> http://www.enchantedlearning.com/subjects/astronomy/planets/saturn/
 			*/
 			main div.sun {
 				margin-left: -750px;
@@ -144,7 +145,7 @@
 				width:1000px;
 			}
 			main div.mercury {
-				margin-left: 1000px;
+				margin-left: 1200px;
 				margin-top: 540px;
 			}
 			main div.mercury img {
@@ -153,7 +154,7 @@
 				width: 20px;
 			}
 			main div.venus {
-				margin-left: -30px;
+				margin-left: 100px;
 				margin-top: 525.2px;
 			}
 			main div.venus img {
@@ -161,7 +162,7 @@
 				width: 49.6px;
 			}
 			main div.earth {
-				margin-left: -10px;
+				margin-left: 100px;
 				margin-top: 523.8px;
 			}
 			main div.earth img {
@@ -169,7 +170,7 @@
 				width: 52.3px;
 			}
 			main div.mars {
-				margin-left: -5px;
+				margin-left: 150px;
 				margin-top: 536.1px;
 			}
 			main div.mars img {
@@ -177,7 +178,7 @@
 				width: 27.8px;
 			}
 			main div.jupiter {
-				margin-left: 150px;
+				margin-left: 450px;
 				margin-top: 257.3px;
 			}
 			main div.jupiter img {
@@ -190,7 +191,7 @@
 				margin-top: 327.1px;
 			}
 			main div.saturn img {
-				transform: rotate(180deg);
+				transform: rotate(160deg);
 				height: 445.8px;
 				width: 1230px;
 			}
@@ -231,11 +232,13 @@
 			header .title:hover + .disclaimer {
 				height: 2.5em;
 				opacity: 1;
+				visibility: visible;
 			}
 
 			header .disclaimer {
 				height: 0em;
 				width: 500px;
+				visibility: hidden;
 				opacity: 0;
 				text-align: center;
 				margin-left: 0px;
@@ -256,7 +259,6 @@
 	</script>
 </head>
 <body onload="init()">
-	<nav>
 	<header id="header">
 		<div class="title">
 			THE PLANETS
@@ -265,25 +267,24 @@
 			<div>Sun & Spacing not to scale</div>
 		</div>
 		<div class="menu">
-			<a href="#">The Sun</a>
-			<a href="#">Mercury</a>
-			<a href="#">Venus</a>
-			<a href="#">Mars</a>
-			<a href="#">Jupiter</a>
-			<a href="#">Saturn</a>
-			<a href="#">Uranus</a>
-			<a href="#">Neptune</a>
-			<a href="#">Pluto</a>
+			<a href="sun.html">The Sun</a>
+			<a href="mercury.html">Mercury</a>
+			<a href="venus.html">Venus</a>
+			<a href="earth.html">Earth</a>
+			<a href="mars.html">Mars</a>
+			<a href="jupiter.html">Jupiter</a>
+			<a href="saturn.html">Saturn</a>
+			<a href="uranus.html">Uranus</a>
+			<a href="neptune.html">Neptune</a>
+			<a href="pluto.html">Pluto</a>
 		</div>
-	</header>
-	</nav>
-	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
+	</header>	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
 	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
 	<div class="wrapper">
 		<main>
 			<div class="sun"><img src="images/sun.png"></div>
 			<!-- Planet class tags are probably unneeded -->
-			<div class="mercury"><img src="images/mercury.png" alt="mercury"></div>
+			<div class="mercury"><a href="mercury.html"><img src="images/mercury.png" alt="mercury"></a></div>
 			<div class="venus"><img src="images/venus.png" alt="venus"></div>
 			<div class="earth"><img src="images/earth.png" alt="earth"></div>
 			<div class="mars"><img src="images/mars.png" alt="mars"></div>
