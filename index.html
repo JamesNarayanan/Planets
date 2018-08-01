@@ -295,7 +295,7 @@
 	<script>
 		function init() {
 			//Need to find a way to do the scroll without removing the scroll bar, or make a way to scroll without the bar
-			/*setTimeout(function(){
+			setTimeout(function(){
 				
 				//make the div slides instead of jumping to the destination
 				document.getElementsByClassName("main")[0].style.transition = "transform 20s ease"	
@@ -303,7 +303,7 @@
 				//will slide 30px to the right, can be negative (-100px), percentage (100%)
 				document.getElementsByClassName("main")[0].style.transform = "translateX(-5500px)"
 			 
-			}, 1000);*/
+			}, 1000);
 		}
 		function sizeBG() {
 			var bS = document.body.style;
@@ -364,14 +364,19 @@
 
 		var timestep = 20; //In msec
 		var done = false;
-		setInterval(botScroll, timestep); //Method to call, timestep
 
-		function botScroll() {
+		setTimeout(function(){
 			if(!done) {
-				console.log(10);
-				document.getElementsByClassName("main")[0].style.transform = "translateX(10px)";
+				//make the div slides instead of jumping to the destination
+				document.getElementsByClassName("main")[0].style.transition = "transform 0s";	
+				
+				//will slide 30px to the right, can be negative (-100px), percentage (100%)
+				document.getElementsByClassName("main")[0].style.transform = "translateX(-5500px)";
 			}
-		}
+			else {
+				document.getElementsByClassName("main")[0].style.transition = "transform 0s";
+			}
+		}, 1000);
 
 		function handleMyMouseMove(e) {
 			var mouseX = e.clientX;
