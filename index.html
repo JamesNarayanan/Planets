@@ -28,7 +28,7 @@
 			display: flex; /*This stops the planets from being centered horizontally*/
 			flex-direction: column;
 			align-items: stretch;
-			overflow-y: hidden; /*Stops scrolling  vertically*/
+			overflow: hidden; /*Stops scrolling*/
 		}
 
 		a {
@@ -392,7 +392,7 @@
 			//console.log("inScrollBar: " + 0);
 			
 			var maxRight = (1 - sideMarginPercent - markerWidthPercent)*window.innerWidth;
-			var maxLeft = sideMarginPercent*window*innerWidth;
+			var maxLeft = sideMarginPercent*window.innerWidth;
 
 			console.log("maxRight: " + maxRight);
 			console.log("maxLeft: " + maxLeft)
@@ -404,7 +404,7 @@
 					marker.style.left = maxRight + "px";
 				else if(newSpot<maxLeft)
 					marker.style.left = maxLeft + "px";
-				else
+				else if(mouseX>maxLeft && mouseX<maxRight + markerWidthPercent*window.innerWidth)
 					marker.style.left = newSpot + "px";
 			}
 			//console.log("---------------------------");
