@@ -2,6 +2,10 @@
 	margin: 0;
 	padding: 0;
 }
+html, body {
+	height: 100%;
+	font-size: 18px;
+}
 a {
 	text-decoration: none;
 	color: inherit;
@@ -46,6 +50,7 @@ header {
 	header .menu .thisPlanet {
 		color: white/*#D5380F*/;
 		padding: 10px;
+		margin: -5px;
 		background-color: rgba(0,0,0,.4);
 	}
 	header .menu .thisPlanet:hover {
