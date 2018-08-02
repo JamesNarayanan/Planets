@@ -291,27 +291,18 @@
 				text-align: center;
 			}
 		}
+		@media (max-width:800px) {
+			div.scroll {
+				display: none;
+			}
+			body {
+				overflow-x: visible;
+			}
+		}
 	</style>
 	<script>
 		function init() {
-<<<<<<< HEAD
-			pageScroll();
-		}
-		function pageScroll() {
-			window.scrollBy(1,0);
-    		scrolldelay = setTimeout(pageScroll,10);
-=======
-			//Need to find a way to do the scroll without removing the scroll bar, or make a way to scroll without the bar
-			/*setTimeout(function(){
-				
-				//make the div slides instead of jumping to the destination
-				document.getElementsByClassName("main")[0].style.transition = "transform 20s ease"	
-				
-				//will slide 30px to the right, can be negative (-100px), percentage (100%)
-				document.getElementsByClassName("main")[0].style.transform = "translateX(-5500px)"
-			 
-			}, 1000);*/
->>>>>>> 235dd0e90cc7aa26407493d68fd55e59a35d55f6
+
 		}
 		function sizeBG() {
 			var bS = document.body.style;
@@ -381,24 +372,25 @@
 		var step = 1.0 / numIntervals;
 		var offset = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;//0.0;
 
-		const autoScroll = setInterval(function(){
-			if(done)
-				clearInterval(autoScroll);
+		if(getStyle(scroll, 'display')!='none') {
+			const autoScroll = setInterval(function(){
+				if(done)
+					clearInterval(autoScroll);
 
-			totalMove -= shift;
+				totalMove -= shift;
 
-			document.getElementsByClassName("main")[0].style.transform = "translateX(" + totalMove + "px)";
+				document.getElementsByClassName("main")[0].style.transform = "translateX(" + totalMove + "px)";
 
-			offset += 0.9 * step;
-            
-			movement = 100.0 * offset + "%";
+				offset += 0.9 * step;
+	            
+				movement = 100.0 * offset + "%";
 
-			marker.style.left = movement;
-			
-			if(totalMove==-1*moveFinish)
-				done = true;
-		}, timestep);
-
+				marker.style.left = movement;
+				
+				if(totalMove==-1*moveFinish)
+					done = true;
+			}, timestep);
+		}
 		function handleMyMouseMove(e) {
 			var mouseX = e.clientX;
 			var currentSpot = parseInt(getStyle(marker, 'left'), 10);
