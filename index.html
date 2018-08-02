@@ -24,6 +24,7 @@
 			
 			background-position:center;
 			background-size: 10% auto;
+			background-color: black;
 			/*background-size: 100vw; /*Width, Height       If height is not listed it is auto*/
 			display: flex; /*This stops the planets from being centered horizontally*/
 			flex-direction: column;
@@ -231,9 +232,9 @@
 				border-radius: 5px;
 				background-color: black;
 				opacity: .6;
-				transition: .5s;
+				transition: opacity .5s, all .2s;
 			}
-			div.scroll:hover {
+			div.scroll {
 				opacity: 1;
 			}
 			div.marker {
@@ -290,6 +291,7 @@
 				text-align: center;
 			}
 		}
+		/*Media queries -> https://css-tricks.com/snippets/css/media-queries-for-standard-devices/*/
 		@media only screen /*Iphone 6,7,8*/
 		  and (min-device-width: 375px) 
 		  and (max-device-width: 667px) 
@@ -465,10 +467,12 @@
 			mousepressed = true;
 			done = true;
 			startMouseX=e.clientX;
+			scroll.style.boxShadow = "0 0 20px grey";
 		}
 		function handleMyMouseUp(e) {
 			mousepressed = false;
 			scroll.style.opacity = startOpac;
+			scroll.style.boxShadow = "none";
 		}
 		function getStyle(el,styleProp) { //https://stackoverflow.com/questions/10556185/style-backgroundcolor-is-an-empty-string-in-javascript
 		    if (el.currentStyle)
