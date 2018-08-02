@@ -28,7 +28,7 @@
 			display: flex; /*This stops the planets from being centered horizontally*/
 			flex-direction: column;
 			align-items: stretch;
-			overflow-y: hidden; /*Stops scrolling  vertically*/
+			overflow: hidden; /*Stops scrolling*/
 		}
 
 		a {
@@ -103,16 +103,17 @@
 			}
 
 		.wrapper {
-		    width: 100%;
-		    flex-grow: 1;
-		    display: flex;
-		    /*justify-content: center;
-		    align-items: start; /*center*/
+			width: 100%;
+			flex-grow: 1;
+			display: flex;
+			/*justify-content: center;
+			align-items: start; /*center*/
 		}
 
 		main {
 			padding: 0px 20px; /*40px 20px*/
 			display: flex;
+			user-select: none;
 			/*justify-content: center;*/
 			/*align-items: center; /*Should vertically align to center*/
 			/*This makes the planets wrap -> flex-wrap: wrap;*/
@@ -221,6 +222,49 @@
 				width: 9.3px;
 			}
 
+			div.scroll {
+				position: fixed;
+				left: 2.5%; /*(100-width)/2*/
+				/*margin-left: -47.5%; /*This value should be have of the width to center align it*/
+				bottom: 20px;
+				height: 25px;
+				width: 95%;
+				border-radius: 5px;
+				background-color: black;
+				opacity: .6;
+				transition: .5s;
+			}
+			div.scroll:hover {
+				opacity: 1;
+			}
+			div.marker {
+				position: fixed;
+				width: 5%;
+				height: 35px;
+				margin-top: -5px; /*Should be half of the difference between this height and scroll height*/
+				border-radius: 7.5px;
+				z-index: 1;
+				cursor: pointer;
+				background-color: rgb(160,60,60);
+			}
+			div.start {
+				position: fixed;
+				width: 25px;
+				height: inherit;
+				border-radius: inherit;
+				left: 2.5%; /*Should be (100-scroll.width)/2*/
+				bottom: inherit;
+				background-color: rgb(30,30,30);
+			}
+			div.end {
+				position: fixed;
+				width: 25px;
+				height: inherit;
+				border-radius: inherit;
+				right: 2.5%; /*Should be (100-scroll.width)/2*/
+				bottom: inherit;
+				background-color: rgb(30,30,30);
+			}
 		@media (max-width:1600px) {
 			body {
 				display: flex; /*Used to be block*/
@@ -250,7 +294,16 @@
 	</style>
 	<script>
 		function init() {
-			//document.getElementById("header").style.width = "" + screen.width + "px";
+			//Need to find a way to do the scroll without removing the scroll bar, or make a way to scroll without the bar
+			/*setTimeout(function(){
+				
+				//make the div slides instead of jumping to the destination
+				document.getElementsByClassName("main")[0].style.transition = "transform 20s ease"	
+				
+				//will slide 30px to the right, can be negative (-100px), percentage (100%)
+				document.getElementsByClassName("main")[0].style.transform = "translateX(-5500px)"
+			 
+			}, 1000);*/
 		}
 		function sizeBG() {
 			var bS = document.body.style;
@@ -264,7 +317,7 @@
 			THE PLANETS
 		</div>
 		<div class="disclaimer">
-			<div>Sun & Spacing not to scale</div>
+			<div>&nbsp;&nbsp;&nbsp;Sun & Spacing not to scale&nbsp;&nbsp;&nbsp;</div> <!--Spaces make it look better while animating-->
 		</div>
 		<div class="menu">
 			<a href="sun.html">The Sun</a>
@@ -281,7 +334,7 @@
 	</header>	<!-- Sun image -> https://vignette.wikia.nocookie.net/newdcmovieuniverse/images/3/37/El-sol.jpg/revision/latest?cb=20131023220054 -->
 	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
 	<div class="wrapper">
-		<main>
+		<main class="main">
 			<div class="sun"><a href="sun.html"><img src="images/sun.png"></a></div>
 			<!-- Planet class tags are probably unneeded -->
 			<div class="mercury"><a href="mercury.html"><img src="images/mercury.png" alt="mercury"></a></div>
@@ -295,5 +348,129 @@
 			<div class="pluto"><a href="pluto.html"><img src="images/pluto.png" alt="pluto"></a></div>
 		</main>
 	</div>
+	<div class="scroll">
+		<div class="start"></div>
+		<div class="marker"></div>
+		<div class="end"></div>
+	</div>
+	<script type="text/javascript">
+	//https://stackoverflow.com/questions/5730433/keep-mouse-inside-a-div
+		var marker = document.getElementsByClassName("marker")[0];
+		var scroll = document.getElementsByClassName("scroll")[0];
+		var startOpac = document.getElementsByClassName("scroll")[0].style.opacity;
+		var mousepressed = false;
+		var startMouseX;
+		var mainSpot = 0;
+		
+		var movement = 0;
+		var timestep = 20; //In msec
+		var shift = 50;
+		var moveFinish = 5500;
+		var numIntervals = moveFinish/shift;
+		var totalMove = 0;
+		var done = false;
+
+		var step = 1.0 / numIntervals;
+		var offset = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;//0.0;
+
+		const autoScroll = setInterval(function(){
+			if(done)
+				clearInterval(autoScroll);
+
+			totalMove -= shift;
+
+			document.getElementsByClassName("main")[0].style.transform = "translateX(" + totalMove + "px)";
+
+			offset += 0.9 * step;
+            
+			movement = 100.0 * offset + "%";
+
+			marker.style.left = movement;
+			
+			if(totalMove==-1*moveFinish)
+				done = true;
+		}, timestep);
+
+		function handleMyMouseMove(e) {
+			var mouseX = e.clientX;
+			var currentSpot = parseInt(getStyle(marker, 'left'), 10);
+			var newSpot = currentSpot + mouseX - startMouseX;
+			//console.log("New Spot: " + newSpot);
+			//console.log("MouseX: " + mouseX);
+			//console.log("startMouseX: " + startMouseX);
+
+			var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
+			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
+			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;
+			var error = sideMarginPercent*.00; //If needed
+
+			//console.log("spotPercent: " + spotPercent);
+			//console.log("markerWidthPercent: " + markerWidthPercent);
+			//console.log("sideMarginPercent: " + sideMarginPercent);
+			//console.log("error: " + error);
+
+			//var inScrollBar = (spotPercent >= sideMarginPercent - error) && (spotPercent+markerWidthPercent <= 1 - sideMarginPercent + error);
+			var inLeft = (spotPercent >= sideMarginPercent - error);
+			var inRight = (spotPercent+markerWidthPercent <= 1 - sideMarginPercent + error);
+			var moveLeft = newSpot<currentSpot;
+			var moveRight = newSpot>currentSpot;
+			
+			//console.log("inScrollBar: " + 0);
+			
+			var maxRight = (1 - sideMarginPercent - markerWidthPercent)*window.innerWidth;
+			var maxLeft = sideMarginPercent*window.innerWidth;
+
+			//console.log("maxRight: " + maxRight);
+			//console.log("maxLeft: " + maxLeft)
+
+			var movePercent = (spotPercent - sideMarginPercent) * 1/(1 - (markerWidthPercent + 2*sideMarginPercent));
+
+			if(mousepressed && (inLeft || moveRight) && (inRight || moveLeft)) {
+				scroll.style.opacity = 1;
+				startMouseX = mouseX;
+
+				mainSpot = movePercent * (-5000 - 1000000/window.innerWidth);
+				document.getElementsByClassName("main")[0].style.transform = "translateX(" + mainSpot + "px)";
+
+				//console.log("movePercent: " + movePercent);
+				//console.log("mainSpot: " + mainSpot);
+
+				if(newSpot>maxRight) {
+					//marker.style.left = maxRight + "px";
+					marker.style.left = (maxRight/window.innerWidth)*100 + "%";
+				}
+				else if(newSpot<maxLeft) {
+					//marker.style.left = maxLeft + "px";
+					marker.style.left = (maxLeft/window.innerWidth)*100 + "%";
+				}
+				else if(mouseX>maxLeft && mouseX<maxRight + markerWidthPercent*window.innerWidth) {
+					//marker.style.left = newSpot + "px";
+					marker.style.left = (newSpot/window.innerWidth)*100 + "%";
+				}
+			}
+			//console.log("---------------------------");
+		}
+
+		function handleMyMouseDown(e) {
+			mousepressed = true;
+			done = true;
+			startMouseX=e.clientX;
+		}
+		function handleMyMouseUp(e) {
+			mousepressed = false;
+			scroll.style.opacity = startOpac;
+		}
+		function getStyle(el,styleProp) { //https://stackoverflow.com/questions/10556185/style-backgroundcolor-is-an-empty-string-in-javascript
+		    if (el.currentStyle)
+		        return el.currentStyle[styleProp];
+
+		    return document.defaultView.getComputedStyle(el,null)[styleProp];
+		}
+
+		window.addEventListener("mousemove", handleMyMouseMove, false);
+		marker.addEventListener("mousedown", handleMyMouseDown, false);
+		window.addEventListener("mouseup", handleMyMouseUp, false);
+
+	</script>
 </body>
 </html>
