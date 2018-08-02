@@ -225,7 +225,6 @@
 			div.scroll {
 				position: fixed;
 				left: 2.5%; /*(100-width)/2*/
-				/*margin-left: -47.5%; /*This value should be have of the width to center align it*/
 				bottom: 20px;
 				height: 25px;
 				width: 95%;
@@ -291,8 +290,19 @@
 				text-align: center;
 			}
 		}
-		@media (max-width:800px) {
-			div.scroll {
+		@media only screen /*Iphone 6,7,8*/
+		  and (min-device-width: 375px) 
+		  and (max-device-width: 667px) 
+		  and (-webkit-min-device-pixel-ratio: 2),
+		only screen /*Iphone 6+,7+,8+*/
+		  and (min-device-width: 414px) 
+		  and (max-device-width: 736px) 
+		  and (-webkit-min-device-pixel-ratio: 3),
+		only screen /*Iphone X*/
+		  and (min-device-width: 375px) 
+		  and (max-device-width: 812px) 
+		  and (-webkit-min-device-pixel-ratio: 3) { 
+		  	div.scroll {
 				display: none;
 			}
 			body {
@@ -381,7 +391,7 @@
 
 				document.getElementsByClassName("main")[0].style.transform = "translateX(" + totalMove + "px)";
 
-				offset += 0.9 * step;
+				offset += (1 - parseInt(getStyle(marker, 'width'), 10)/window.innerWidth - 2*(parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth)) * step;//0.9 * step;
 	            
 				movement = 100.0 * offset + "%";
 
