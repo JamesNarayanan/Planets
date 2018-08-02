@@ -245,7 +245,7 @@
 				border-radius: 7.5px;
 				z-index: 1;
 				cursor: pointer;
-				background-color: rgb(60,60,60);
+				background-color: rgb(160,60,60);
 			}
 			div.start {
 				position: fixed;
@@ -295,7 +295,7 @@
 	<script>
 		function init() {
 			//Need to find a way to do the scroll without removing the scroll bar, or make a way to scroll without the bar
-			setTimeout(function(){
+			/*setTimeout(function(){
 				
 				//make the div slides instead of jumping to the destination
 				document.getElementsByClassName("main")[0].style.transition = "transform 20s ease"	
@@ -303,7 +303,7 @@
 				//will slide 30px to the right, can be negative (-100px), percentage (100%)
 				document.getElementsByClassName("main")[0].style.transform = "translateX(-5500px)"
 			 
-			}, 1000);
+			}, 1000);*/
 		}
 		function sizeBG() {
 			var bS = document.body.style;
@@ -317,7 +317,7 @@
 			THE PLANETS
 		</div>
 		<div class="disclaimer">
-			<div>Sun & Spacing not to scale</div>
+			<div>&nbsp;&nbsp;&nbsp;Sun & Spacing not to scale&nbsp;&nbsp;&nbsp;</div> <!--Spaces make it look better while animating-->
 		</div>
 		<div class="menu">
 			<a href="sun.html">The Sun</a>
@@ -361,22 +361,47 @@
 		var mousepressed = false;
 		var startMouseX;
 		var mainSpot = 0;
+		var val = 0;
 
 		var timestep = 20; //In msec
+		var shift = 50;
+		var moveFinish = 5500;
+		var numIntervals = moveFinish/shift;
+		var totalMove = 0;
 		var done = false;
+		var prev = 100*parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
 
-		setTimeout(function(){
-			if(!done) {
-				//make the div slides instead of jumping to the destination
-				document.getElementsByClassName("main")[0].style.transition = "transform 0s";	
-				
-				//will slide 30px to the right, can be negative (-100px), percentage (100%)
-				document.getElementsByClassName("main")[0].style.transform = "translateX(-5500px)";
-			}
-			else {
-				document.getElementsByClassName("main")[0].style.transition = "transform 0s";
-			}
-		}, 1000);
+		var step = 1.0 / numIntervals;
+		var val_num = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;//0.0;
+
+		const autoScroll = setInterval(function(){
+			if(done)
+				clearInterval(autoScroll);
+
+			totalMove -= shift;
+
+			document.getElementsByClassName("main")[0].style.transform = "translateX(" + totalMove + "px)";
+
+			
+			val_num += 0.9 * step;
+            
+			val = 100.0 * val_num + "%";
+
+			/*var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
+			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
+			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;
+
+			//val = parseInt(getStyle(marker, 'left'), 10) + (.9*window.innerWidth)/(numIntervals) + "px";
+
+			val = 100*parseInt(getStyle(marker, 'left'), 10)/window.innerWidth + 100*(.9*window.innerWidth)/(numIntervals)/window.innerWidth + "%"; //Didn't put in variables from above yet
+
+			prev =  parseInt(val, 10);*/
+
+			marker.style.left = val;
+			
+			if(totalMove==-1*moveFinish)
+				done = true;
+		}, timestep);
 
 		function handleMyMouseMove(e) {
 			var mouseX = e.clientX;
@@ -388,7 +413,7 @@
 
 			var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
 			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
-			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;//(1 - (parseInt(getStyle(scroll, 'width'), 10)/window.innerWidth))/2;
+			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;
 			var error = sideMarginPercent*.00; //If needed
 
 			//console.log("spotPercent: " + spotPercent);
