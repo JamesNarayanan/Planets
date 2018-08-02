@@ -361,18 +361,17 @@
 		var mousepressed = false;
 		var startMouseX;
 		var mainSpot = 0;
-		var val = 0;
-
+		
+		var movement = 0;
 		var timestep = 20; //In msec
 		var shift = 50;
 		var moveFinish = 5500;
 		var numIntervals = moveFinish/shift;
 		var totalMove = 0;
 		var done = false;
-		var prev = 100*parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
 
 		var step = 1.0 / numIntervals;
-		var val_num = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;//0.0;
+		var offset = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;//0.0;
 
 		const autoScroll = setInterval(function(){
 			if(done)
@@ -382,22 +381,11 @@
 
 			document.getElementsByClassName("main")[0].style.transform = "translateX(" + totalMove + "px)";
 
-			
-			val_num += 0.9 * step;
+			offset += 0.9 * step;
             
-			val = 100.0 * val_num + "%";
+			movement = 100.0 * offset + "%";
 
-			/*var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
-			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
-			var sideMarginPercent = parseInt(getStyle(scroll, 'left'), 10)/window.innerWidth;
-
-			//val = parseInt(getStyle(marker, 'left'), 10) + (.9*window.innerWidth)/(numIntervals) + "px";
-
-			val = 100*parseInt(getStyle(marker, 'left'), 10)/window.innerWidth + 100*(.9*window.innerWidth)/(numIntervals)/window.innerWidth + "%"; //Didn't put in variables from above yet
-
-			prev =  parseInt(val, 10);*/
-
-			marker.style.left = val;
+			marker.style.left = movement;
 			
 			if(totalMove==-1*moveFinish)
 				done = true;
