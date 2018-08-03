@@ -135,7 +135,7 @@
 			}
 
 			/*
-				A lot of measurements from here -> http://www.enchantedlearning.com/subjects/astronomy/planets/saturn/
+				A lot of measurements from here -> http://www.enchantedlearning.com/subjects/astronomy/planets/index.shtml
 			*/
 			main div.sun {
 				margin-left: -750px;
@@ -252,7 +252,7 @@
 				width: 25px;
 				height: inherit;
 				border-radius: inherit;
-				left: 2.5%; /*Should be (100-scroll.width)/2*/
+				left: inherit; /*Should be (100-scroll.width)/2*/
 				bottom: inherit;
 				background-color: rgb(30,30,30);
 			}
@@ -407,9 +407,11 @@
 			var mouseX = e.clientX;
 			var currentSpot = parseInt(getStyle(marker, 'left'), 10);
 			var newSpot = currentSpot + mouseX - startMouseX;
+
 			//console.log("New Spot: " + newSpot);
 			//console.log("MouseX: " + mouseX);
 			//console.log("startMouseX: " + startMouseX);
+
 
 			var spotPercent = parseInt(getStyle(marker, 'left'), 10)/window.innerWidth;
 			var markerWidthPercent = parseInt(getStyle(marker, 'width'), 10)/window.innerWidth;
@@ -421,13 +423,12 @@
 			//console.log("sideMarginPercent: " + sideMarginPercent);
 			//console.log("error: " + error);
 
-			//var inScrollBar = (spotPercent >= sideMarginPercent - error) && (spotPercent+markerWidthPercent <= 1 - sideMarginPercent + error);
+
 			var inLeft = (spotPercent >= sideMarginPercent - error);
 			var inRight = (spotPercent+markerWidthPercent <= 1 - sideMarginPercent + error);
 			var moveLeft = newSpot<currentSpot;
 			var moveRight = newSpot>currentSpot;
 			
-			//console.log("inScrollBar: " + 0);
 			
 			var maxRight = (1 - sideMarginPercent - markerWidthPercent)*window.innerWidth;
 			var maxLeft = sideMarginPercent*window.innerWidth;
@@ -435,7 +436,9 @@
 			//console.log("maxRight: " + maxRight);
 			//console.log("maxLeft: " + maxLeft)
 
+
 			var movePercent = (spotPercent - sideMarginPercent) * 1/(1 - (markerWidthPercent + 2*sideMarginPercent));
+
 
 			if(mousepressed && (inLeft || moveRight) && (inRight || moveLeft)) {
 				scroll.style.opacity = 1;
@@ -446,6 +449,7 @@
 
 				//console.log("movePercent: " + movePercent);
 				//console.log("mainSpot: " + mainSpot);
+
 
 				if(newSpot>maxRight) {
 					//marker.style.left = maxRight + "px";
