@@ -2,11 +2,18 @@
 <html>
 <head>
 	<title>Mercury</title>
-		<link href="https://fonts.googleapis.com/css?family=Orbitron:900|Rubik+Mono+One|Open+Sans" rel="stylesheet">
-		<link href="articleStyle.css" rel="stylesheet">
-	<style>
-		
-	</style>
+	<link href="articleStyle.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+				var increment = 300;
+		        var time = 0;
+		        $("li").hide().each(function() {
+		            $(this).delay(time).fadeIn(1000);
+		            time += increment;
+		        });
+		});
+	</script>
 </head>
 <body onload="init()" onresize="onResize()">
 	<header id="header">
@@ -28,12 +35,16 @@
 	</header>
 	<main>
 		<div class="split left">
-			
+			<img src="images/mercury.png">
 		</div>
 		<div class="split right">
-			<ul>
+			<ul id="list">
+				<li class="description">
+					Mercury is the planet closest to the sun, as well as the smallest planet. Because of the planet's proximity to the Sun, there is a huge range in temperature. Mercury is also heavily cratered, similar to Earth's moon. It has a very elliptical orbit and almost no atmosphere. The planet's name is derived from the Roman messenger god, Mercury.
+				</li>
+				<br>
 				<li>
-					<div>Size:</div> 4,878 km (3,031 mi) diameter
+					<div>Size:</div> 4,878 km diameter (Slightly larger than Earth's moon)
 				</li>
 				<li>
 					<div>Mass:</div> 3.3 x 1023 kg
@@ -41,9 +52,21 @@
 				<li>
 					<div>Distance to the Sun:</div> 
 					<br>
-					<div>Closest (Perihelion)</div> – 46 million km
+					<div>Closest (Perihelion) –</div> 46 million km
 					<br>
-					<div>Farthest (Aphelion)</div> – 70 million km
+					<div>Farthest (Aphelion) –</div> 70 million km
+				</li>
+				<li>
+					<div>Planet # From the Sun:</div> 1
+				</li>
+				<li>
+					<div>Gravity:</div> 38% of Earth
+				</li>
+				<li>
+					<div>Day Length:</div> 58.65 Earth Days
+				</li>
+				<li>
+					<div>Year Length:</div> 88 Earth Days
 				</li>
 			</ul>
 		</div>

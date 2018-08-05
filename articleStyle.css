@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron:900|Open+Sans|Headland+One');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,7 +9,7 @@ html, body {
 	font-size: 18px;
 }
 body {
-	background-color: rgb(40,40,40);
+	background-color: rgb(153,153,153);
 }
 a {
 	text-decoration: none;
@@ -17,7 +19,7 @@ header {
 	background-color: white;
 	opacity: .9;
 	color: black;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 	padding: 20px 40px;
 	display: flex;
 	align-items: center;
@@ -56,7 +58,7 @@ header {
 		color: white/*#D5380F*/;
 		padding: 10px;
 		margin: -5px;
-		background-color: rgba(0,0,0,.4);
+		background-color: rgb(153,153,153); /*rgba(0,0,0,.4) is the same over a white header*/
 	}
 	header .menu .thisPlanet:hover {
 		font-size: 1em;
@@ -65,8 +67,8 @@ header {
 	}
 
 main {
-	color: rgb(210,210,210);
-	font-family: "Open Sans", sans-serif;
+	color: white/*rgb(153,153,153)*/;
+	font-family: "Headland One", serif;
 }
 
 /* Split the screen in half */
@@ -86,27 +88,31 @@ main {
 .left {
   left: 2%;
 }
-
-/* Control the right side */
-.right {
-  right: 2%;
-}
-
 /* If you want the content centered horizontally and vertically */
-.centered {
+.left img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+/* Control the right side */
+.right {
+  right: 2%;
+}
 ul {
 	margin: 0px 50px;
+}
+li.description {
+	list-style: none;
+	text-align: justify;
 }
 li div {
 	color: #D5380F;
 	display: inline;
 }
+
 
 @media (max-width:1600px) {
 			body {
