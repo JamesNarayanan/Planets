@@ -4,14 +4,19 @@
 }
 html, body {
 	height: 100%;
-	font-size: 18px;}
+	font-size: 18px;
+}
+body {
+	background-color: rgb(40,40,40);
+}
 a {
 	text-decoration: none;
 	color: inherit;
 }
 header {
-	background: rgba(125,0,0,1); /*Subject to change*/
-	color: white;
+	background-color: white;
+	opacity: .9;
+	color: black;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 	padding: 20px 40px;
 	display: flex;
@@ -19,7 +24,7 @@ header {
 	position: fixed;
 	width: 96%;
 	font-family: "Open Sans", sans-serif;
-	z-index: 1; /*Keeps it on top of pictures*/
+	z-index: 0; /*Keeps it below content boxes*/
 }
 	header .title {
 		font-family: "Orbitron", sans-serif;
@@ -42,8 +47,9 @@ header {
 		transition: .4s;
 	}
 	header .menu a:hover {
-		font-size: .9em;
-		padding: .05em;
+		font-size: 1.2em;
+		margin-top: -.1em;
+		margin-bottom: -.1em;
 		color: #D5380F;
 	}
 	header .menu .thisPlanet {
@@ -57,6 +63,50 @@ header {
 		padding: 10px;
 		color: white;
 	}
+
+main {
+	color: rgb(210,210,210);
+	font-family: "Open Sans", sans-serif;
+}
+
+/* Split the screen in half */
+.split {
+	height: 78%; /*Changed in js*/
+	width: 46%;
+	z-index: 1;
+	position: fixed;
+	top: 90px; /*Changed in js*/
+	overflow: auto;
+	padding-top: 20px;
+	background-color: rgb(30,30,30);
+	border-radius: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 2%;
+}
+
+/* Control the right side */
+.right {
+  right: 2%;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+ul {
+	margin: 0px 50px;
+}
+li div {
+	color: #D5380F;
+	display: inline;
+}
 
 @media (max-width:1600px) {
 			body {

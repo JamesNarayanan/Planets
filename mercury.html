@@ -3,12 +3,12 @@
 <head>
 	<title>Mercury</title>
 		<link href="https://fonts.googleapis.com/css?family=Orbitron:900|Rubik+Mono+One|Open+Sans" rel="stylesheet">
-		<link href="headerStyle.css" rel="stylesheet">
+		<link href="articleStyle.css" rel="stylesheet">
 	<style>
-
+		
 	</style>
 </head>
-<body>
+<body onload="init()" onresize="onResize()">
 	<header id="header">
 		<div class="title">
 			<a href="index.html">THE PLANETS</a>
@@ -26,5 +26,29 @@
 			<a href="pluto.html">Pluto</a>
 		</div>
 	</header>
+	<main>
+		<div class="split left">
+			
+		</div>
+		<div class="split right">
+			<ul>
+				<li>
+					<div>Size:</div> 4,878 km (3,031 mi) diameter
+				</li>
+				<li>
+					<div>Mass:</div> 3.3 x 1023 kg
+				</li>
+				<li>
+					<div>Distance to the Sun:</div> 
+					<br>
+					<div>Closest (Perihelion)</div> – 46 million km
+					<br>
+					<div>Farthest (Aphelion)</div> – 70 million km
+				</li>
+			</ul>
+		</div>
+	</main>
+
+	<script src="articleScript.js"></script>
 </body>
 </html>
