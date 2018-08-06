@@ -81,20 +81,24 @@ main {
 	overflow: auto;
 	padding-top: 20px;
 	background-color: rgb(30,30,30);
-	border-radius: 20px;
+	border-radius: 0px;
 }
 
 /* Control the left side */
 .left {
   left: 2%;
+  
 }
 /* If you want the content centered horizontally and vertically */
 .left img {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+.left img:nth-of-type(2) {
+	top: 65%;
 }
 
 /* Control the right side */
@@ -114,31 +118,37 @@ li div {
 }
 	li div.tip {
 		visibility: hidden;
+		opacity: 0;
 		position: absolute;
 		padding: 5px;
 		width: 80%;
-		height: 0;
+		/*max-height: 0;*/
 		background-color: #D5380F;
 		color:white;
 		border-radius: 5px;
 		text-align: center;
-		transition: height .5s;
+		transition: all .5s, max-height 2s;
 	}
 	li div:nth-of-type(1):hover ~ div.tip {
 		visibility: visible;
-		height: 2.5em; /*Setting to initial doesn't work*/
+		opacity: 1;
+		/*max-height: 6em; /*Changing height won't make it transition, it will just snap to the new height*/
 	}
 
 ::-webkit-scrollbar {
-	visibility: hidden;
+	background-color: inherit;
 }
-/*::-webkit-scrollbar-thumb {
-	background-color: rgba(0,0,0,.6);
+::-webkit-scrollbar-thumb {
+	background-color: rgba(255,255,255,.4);
 	border-radius: 10px;
+	transition: .5s;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background-color: black;
-}*/
+	background-color: white;
+}
+::-webkit-scrollbar-corner {
+	background-color: inherit;
+}
 
 @media (max-width:1600px) {
 			body {

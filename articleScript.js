@@ -1,5 +1,14 @@
 function init() {
 	onResize();
+
+	$(document).ready(function(){
+		var increment = 300;
+        var time = 0;
+        $("li").hide().each(function() {
+            $(this).delay(time).fadeIn(1000);
+            time += increment;
+        });
+	});
 }
 function onResize() {
 	var split = document.getElementsByClassName('split');
