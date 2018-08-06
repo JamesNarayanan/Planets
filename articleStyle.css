@@ -97,9 +97,13 @@ main {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.left img:nth-of-type(2) {
-	top: 65%;
-}
+	.left img.mercuryGod {
+		top: 65%;
+	}
+	.left img.venusGod {
+		top: 150%;
+		transform: translate(-40%, -50%);
+	}
 
 /* Control the right side */
 .right {
