@@ -2,7 +2,7 @@ function init() {
 	onResize();
 
 	$(document).ready(function(){
-		var increment = 300;
+		var increment = 200;
         var time = 0;
         $("li").hide().each(function() {
             $(this).delay(time).fadeIn(1000);
