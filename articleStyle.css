@@ -97,12 +97,14 @@ main {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-	.left img.mercuryGod {
-		top: 65%;
+	.left img.planetImg {
+		width: 450px;
+		height: 450px;
 	}
-	.left img.venusGod {
-		top: 150%;
-		transform: translate(-40%, -50%);
+	.left img.godImg {
+		width: 450px;
+		height: auto;
+		top: 475px;
 	}
 
 /* Control the right side */

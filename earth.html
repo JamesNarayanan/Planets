@@ -5,7 +5,21 @@
 	<link href="articleStyle.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style>
-
+		li.temp div:nth-of-type(1):hover ~ div.tip {
+			visibility: hidden;
+			opacity: 0;
+			/*max-height: 6em; /*Changing height won't make it transition, it will just snap to the new height*/
+		}
+		li.temp div:nth-of-type(2):hover ~ div:nth-of-type(3) {
+			visibility: visible;
+			opacity: 1;
+			/*max-height: 6em; /*Changing height won't make it transition, it will just snap to the new height*/
+		}
+		li.temp div:nth-of-type(4):hover ~ div:nth-of-type(5) {
+			visibility: visible;
+			opacity: 1;
+			/*max-height: 6em; /*Changing height won't make it transition, it will just snap to the new height*/
+		}
 	</style>
 </head>
 <body onload="init()" onresize="onResize()">
@@ -31,81 +45,80 @@
 		<!-- There will be open comments where I can put check marks to make sure I didn't skip anything-->
 
 		<div class="split left">
-			<img src="images/earth.png"> <!--		-->
-			<img class="venusGod" src=""> <!--		-->
+			<img class="planetImg" src="images/earth.png"> <!--	x	-->
 		</div>
 		<div class="split right">
 			<ul id="list">
 				<li class="description"> <!--		-->
-					Earth is ___.
+					Earth is a unique planet, the only one in our solar system that has a high capacity to support life. This is because of its temperate climate and because liquid water can exist on the surface of th planet. Earth is the only planet which has a name not derived from Greek/Roman mythology. Earth's named is derived from old english and other germanic languages.
 				</li>
 				<br>
-				<li> <!--		-->
+				<li> <!--	x	-->
 					<div>Planet # From the Sun:</div> 3
 				</li>
-				<li> <!--		-->
+				<li> <!--	x	-->
 					<div>Type:</div> Terrestrial
 				</li>
-				<li> <!--		-->
-					<div>Size:</div> 12,104 km in diameter
-					<br>
-					<div class="tip">About 95.0% of Earth's diameter</div>
+				<li> <!--	x	-->
+					<div>Size:</div> 12,756 km in diameter
 				</li>
-				<li> <!--		-->
-					<div>Mass:</div> 4.87 x 10<sup>24</sup> kg
-					<br>
-					<div class="tip">About 81.5% of Earth's mass</div>
+				<li> <!--	x	-->
+					<div>Mass:</div> 5.97 x 10<sup>24</sup> kg
 				</li>
-				<li> <!--		-->
-					<div>Volume:</div> 92.8 x 10<sup>10</sup> km<sup>3</sup>
-					<br>
-					<div class="tip">This is 85.7% of Earth's volume</div>
+				<li> <!--	x	-->
+					<div>Volume:</div> 108 x 10<sup>10</sup> km<sup>3</sup>
 				</li>
-				<li> <!--		-->
-					<div>Average Density:</div> 5243 kg/m<sup>3</sup>
+				<li> <!--	x	-->
+					<div>Average Density:</div> 5514 kg/m<sup>3</sup>
 					<br>
-					<div class="tip">This is 95.1% of Earth's density</div>
+					<div class="tip">Earth is the densest planet</div>
 				</li>
-				<li> <!--		-->
+				<li> <!--	x	-->
+					<div>Gravity:</div> 9.80 m/s<sup>2</sup>
+				</li>
+				<li> <!--	x	-->
 					<div>Distance to the Sun:</div> 
 					<br>
-					<div>Average –</div> 108.2 million km
+					<div>Average –</div> 149.6 million km
 					<br>
-					<div>Closest (Perihelion) –</div> 107.5 million km
+					<div>Closest (Perihelion) –</div> 147.1 million km
 					<br>
-					<div>Farthest (Aphelion) –</div> 108.9 million km
+					<div>Farthest (Aphelion) –</div> 152.1 million km
 				</li>
-				<li> <!--		-->
-					<div>Average Temperature:</div> ~464°C
+				<li class="temp"> <!--	x	-->
+					<div>Average Temperature:</div> ~ 15°C
+					<br>
+					<div>Lowest Recorded Temperature:</div> -89.2°C
+					<br>
+					<div class="tip"> This was at the Soviet Vostok Station in Antarctica on July 21, 1983</div>
+					<div>Highest Recorded Temperature:</div> 56.7°C
+					<br>
+					<div class="tip">This was at Greenland Ranch, Death Valley, California, USA, on 10 July 1913</div>
 				</li>
-				<li> <!--		-->
-					<div>Gravity:</div> 90.5% of Earth
-				</li>
-				<li> <!--		-->
-					<div>Day Length:</div> 243 Earth Days
+				
+				<li> <!--	x	-->
+					<div>Day Length:</div> 1 Earth Day
 					<br>
 					<div class="tip">A day is how long it takes for the planet to turn 360° on its axis</div>
 				</li>
-				<li> <!--		-->
-					<div>Year Length:</div> 224.7 Earth Days
+				<li> <!--	x	-->
+					<div>Year Length:</div> 365 Earth Days
 					<br>
 					<div class="tip">A year is how long it takes for the planet to complete one orbit around the Sun</div>
 				</li>
-				<li> <!--		-->
-					<div>Atmosphere:</div> Thick, composed mostly of Carbon Dioxide
+				<li> <!--	x	-->
+					<div>Atmosphere:</div> Earth's atmosphere is a mixture of nitrogen (78%), oxygen (21%), and other gases (1%) that surround it. High above the planet, the atmosphere becomes thinner until it gradually reaches space. It is divided into five layers. Most of the weather and clouds are found in the first layer.
+					<a href="https://www.windows2universe.org/earth/Atmosphere/overview.html"><sup>†</sup></a>
 					<br>
-					<div class="tip">The CO<sub>2</sub> is what keeps the planet so hot, as it retains heat very well</div>
+					<div class="tip">This is what keeps the temperature steady from day to night and allows us to breath</div>
 				</li>
-				<li> <!--		-->
-					<div>Atmospheric Pressure:</div> 92 bars
+				<li> <!--	x	-->
+					<div>Atmospheric Pressure:</div> 1.014 bars
 					<br>
-					<div class="tip">About 92 times Earth's pressure</div>
+					<div class="tip">Exactly 1 atm</div>
 				</li>
 				<li> <!--		-->
-					<div>Moons:</div> None
-				</li>
-				<li> <!--		-->
-					<div>First Discovered:</div> 17<sup>th</sup> Century BC by Babylonian Astronomers
+					<div>Moons:</div> One
 				</li>
 			</ul>
 		</div>
