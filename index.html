@@ -127,6 +127,7 @@
 				width: 100px;
 				text-align: center;
 				position: relative;
+				top: 50%;
 			}
 			main div img {
 				height: 100px;
@@ -138,8 +139,10 @@
 				A lot of measurements from here -> http://www.enchantedlearning.com/subjects/astronomy/planets/index.shtml
 			*/
 			main div.sun {
-				margin-left: -750px;
-				margin-top: 50px;
+				/*margin-left: -750px;
+				margin-top: 50px;*/
+				margin-top: -500px; /* Half the height */
+				margin-left: -750px; /* Half the width */
 			}
 			main div.sun img {
 				/*transform:translate(-80%,-50%);*/
@@ -148,7 +151,7 @@
 			}
 			main div.mercury {
 				margin-left: 1200px;
-				margin-top: 540px;
+				margin-top: -10px; /*540px;*/
 			}
 			main div.mercury img {
 				transform: rotate(180deg);
@@ -157,7 +160,7 @@
 			}
 			main div.venus {
 				margin-left: 100px;
-				margin-top: 525.2px;
+				margin-top: -24.8px; /*525.2px;*/
 			}
 			main div.venus img {
 				height: 49.6px;
@@ -165,7 +168,7 @@
 			}
 			main div.earth {
 				margin-left: 100px;
-				margin-top: 523.8px;
+				margin-top: -26.15px; /*523.8px;*/
 			}
 			main div.earth img {
 				height: 52.3px;
@@ -173,7 +176,7 @@
 			}
 			main div.mars {
 				margin-left: 150px;
-				margin-top: 536.1px;
+				margin-top: -13.9px; /*536.1px;*/
 			}
 			main div.mars img {
 				height: 27.8px;
@@ -181,7 +184,7 @@
 			}
 			main div.jupiter {
 				margin-left: 450px;
-				margin-top: 257.3px;
+				margin-top: -292.75px; /*257.3px;*/
 			}
 			main div.jupiter img {
 				transform: rotate(180deg);
@@ -190,7 +193,7 @@
 			}
 			main div.saturn {
 				margin-left: 1000px;
-				margin-top: 327.1px;
+				margin-top: -272.9px; /*327.1px;*/
 			}
 			main div.saturn img {
 				transform: rotate(160deg);
@@ -199,7 +202,7 @@
 			}
 			main div.uranus {
 				margin-left: 1500px;
-				margin-top: 445.2px;
+				margin-top: -104.8px; /*445.2px;*/
 			}
 			main div.uranus img {
 				transform: rotate(-135deg);
@@ -208,7 +211,7 @@
 			}
 			main div.neptune {
 				margin-left: 1000px;
-				margin-top: 448.5px;
+				margin-top: -101.55px; /*448.5px;*/
 			}
 			main div.neptune img {
 				height: 203.1px;
@@ -216,7 +219,7 @@
 			}
 			main div.pluto {
 				margin-left: 1200px;
-				margin-top: 545.3px;
+				margin-top: -4.65px; /*545.3px;*/
 			}
 			main div.pluto img {
 				height: 9.3px;
@@ -329,8 +332,8 @@
 	<!-- Planet images -> https://owlcation.com/stem/True-Color-Photos-of-All-the-Planets -->
 	<div class="wrapper">
 		<main class="main">
+			<!-- Main class name needed for js -->
 			<div class="sun"><a href="sun.html"><img src="images/sun.png"></a></div>
-			<!-- Planet class tags are probably unneeded -->
 			<div class="mercury"><a href="mercury.html"><img src="images/mercury.png" alt="mercury"></a></div>
 			<div class="venus"><a href="venus.html"><img src="images/venus.png" alt="venus"></a></div>
 			<div class="earth"><a href="earth.html"><img src="images/earth.png" alt="earth"></a></div>
