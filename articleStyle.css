@@ -81,7 +81,7 @@ main {
 	overflow: auto;
 	padding-top: 20px;
 	background-color: rgb(30,30,30);
-	border-radius: 0px;
+	border-radius: 20px;
 }
 
 /* Control the left side */
@@ -92,7 +92,6 @@ main {
 /* If you want the content centered horizontally and vertically */
 .left img {
   position: relative;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -100,11 +99,14 @@ main {
 	.left img.planetImg {
 		width: 450px;
 		height: 450px;
+		top: 225px;
+		margin: 50px;
 	}
 	.left img.godImg {
 		width: 450px;
 		height: auto;
-		top: 475px;
+		top: 400px;
+		margin: 50px
 	}
 
 /* Control the right side */
