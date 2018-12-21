@@ -26,7 +26,7 @@ header {
 	position: fixed;
 	width: 96%;
 	font-family: "Open Sans", sans-serif;
-	z-index: 0; /*Keeps it below content boxes*/
+	z-index: 10; /*Keeps it below content boxes*/
 }
 	header .title {
 		font-family: "Orbitron", sans-serif;
@@ -81,40 +81,43 @@ main {
 	overflow: auto;
 	padding-top: 20px;
 	background-color: rgb(30,30,30);
-	border-radius: 20px;
+	border-radius: 10px;
 }
 
 /* Control the left side */
 .left {
-  left: 2%;
-  
+	left: 2%;
+	display: flex;
+	justify-content: center;
+	color: rgba(0,0,0,0);
+	transition: .25s ease;
 }
 /* If you want the content centered horizontally and vertically */
 .left img {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+	position: absolute;
+	width: 450px;
 }
 	.left img.planetImg {
-		width: 450px;
 		height: 450px;
-		top: 225px;
-		margin: 50px;
+		top: 25px;
 	}
 	.left img.godImg {
-		width: 450px;
 		height: auto;
-		top: 400px;
-		margin: 50px
+		margin-bottom: 25px;
+		transform-origin: top;
+		transform: translateY(500px);
+		border: 5px solid white;
 	}
 
 /* Control the right side */
 .right {
-  right: 2%;
+	right: 2%;
+	color: rgba(0,0,0,0);
+	transition: .25s ease;
 }
 ul {
 	margin: 0px 50px;
+	text-shadow: 0 0 white;
 }
 li.description {
 	list-style: none;
@@ -122,6 +125,7 @@ li.description {
 }
 li div {
 	color: #D5380F;
+	text-shadow: none;
 	display: inline;
 }
 	li div.tip {
@@ -143,44 +147,50 @@ li div {
 		/*max-height: 6em; /*Changing height won't make it transition, it will just snap to the new height*/
 	}
 
-::-webkit-scrollbar {
-	background-color: inherit;
-}
-::-webkit-scrollbar-thumb {
-	background-color: rgba(255,255,255,.4);
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+	width: 20px;
+	height: 20px;
+	border: 5px solid transparent;
+	background-clip: padding-box;
 	border-radius: 10px;
-	transition: .5s;
 }
-::-webkit-scrollbar-thumb:hover {
-	background-color: white;
+*::-webkit-scrollbar-thumb {        
+	box-shadow: inset 0 0 0 10px;
 }
 ::-webkit-scrollbar-corner {
 	background-color: inherit;
 }
+.left:hover {
+	color: rgba(255,255,255,.5);
+}
+.right:hover {
+	color: rgba(255,255,255,.6);
+}
 
 @media (max-width:1600px) {
-			body {
-				display: flex; /*Used to be block*/
-			}
+	body {
+		display: flex; /*Used to be block*/
+	}
 
-			header {
-				flex-direction: column;
-			}
-			header .title:hover + .disclaimer {
-				height: 2.5em;
-				opacity: 1;
-				visibility: visible;
-			}
+	header {
+		flex-direction: column;
+	}
+	header .title:hover + .disclaimer {
+		height: 2.5em;
+		opacity: 1;
+		visibility: visible;
+	}
 
-			header .disclaimer {
-				height: 0em;
-				width: 500px;
-				visibility: hidden;
-				opacity: 0;
-				text-align: center;
-				margin-left: 0px;
-			}
-			header .menu {
-				text-align: center;
-			}
-		}
+	header .disclaimer {
+		height: 0em;
+		width: 500px;
+		visibility: hidden;
+		opacity: 0;
+		text-align: center;
+		margin-left: 0px;
+	}
+	header .menu {
+		text-align: center;
+	}
+}
