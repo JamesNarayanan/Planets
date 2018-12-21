@@ -5,8 +5,60 @@
 	<link href="articleStyle.css" rel="stylesheet">
 	<link rel="icon" href="images/sun.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<style>
-
+	<style>	
+		@media (max-width:1600px) {
+			body {
+				display: inherit;
+			}
+		}
+		
+		body {
+			background: black;
+		}
+		*::-webkit-scrollbar-thumb {
+			color: #D5380F;
+		}
+		main {
+		  /* The height needs to be set to a fixed value for the effect to work.
+		   * 100vh is the full height of the viewport. */
+		  height: 100vh;
+		  /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+		  overflow-x: hidden;
+		  /* Enable scrolling on the page. */
+		  overflow-y: auto;
+		  /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
+		  perspective: 2px;
+		}
+		
+		.parallax {
+		  position: relative;
+		  height: 100%;
+		}
+		
+		.parallax::after {
+			content: " ";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			
+			background-image: url("https://kiranvoid.files.wordpress.com/2014/02/3-the-sun-hidden-universe2.jpg?w=1300");
+			
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			
+			/*This makes the image appear to scroll slowly*/
+			transform: translateZ(-1px) scale(1.5);
+			
+			z-index: -1;
+		}
+		.content {
+			width: 100%;
+			background: rgb(30,30,30);
+			padding: 20px;
+		}
 	</style>
 </head>
 <body onload="init()" onresize="onResize()">
@@ -28,13 +80,48 @@
 		</div>
 	</header>
 	<main>
-		<div class="split left centered">
-			
-		</div>
-		<div class="split right">
-			<ul>
-				
-			</ul>
+		<div class="parallax"></div>
+		<div class="content">
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
+			<p>The sun is great.</p>
 		</div>
 	</main>
 
