@@ -61,7 +61,7 @@
 		}
 	</style>
 </head>
-<body onload="init()" onresize="onResize()">
+<body onload="startHide()">
 	<header id="header">
 		<div class="title">
 			<a href="index.html">THE PLANETS</a>
@@ -79,7 +79,7 @@
 			<a href="pluto.html">Pluto</a>
 		</div>
 	</header>
-	<main>
+	<main onscroll="hideHeader()">
 		<div class="parallax"></div>
 		<div class="content">
 			<p>The sun is great.</p>
@@ -124,7 +124,16 @@
 			<p>The sun is great.</p>
 		</div>
 	</main>
-
-	<script src="articleScript.js"></script>
+	<script>
+		function startHide() {
+			$("header").hide();
+		}
+		function hideHeader() {
+			if(document.getElementsByTagName("main")[0].scrollTop == 0)
+				$("header").fadeOut();
+			else
+				$("header").fadeIn();
+		}
+	</script>
 </body>
 </html>
